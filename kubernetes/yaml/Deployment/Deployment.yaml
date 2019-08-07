@@ -1,0 +1,44 @@
+﻿apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: webapp-pink-deployment-${TAG}
+  namespace: default
+  labels:
+    app: webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp-pink-label-${TAG}
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: webapp-pink-label-${TAG}
+        tag: webapp
+    spec:
+      containers:
+        - env:
+            - name: ASPNETCORE_URLS
+              value: 'http://+:80'
+            - name: DOTNET_RUNNING_IN_CONTAINER
+              value: 'true'
+            - name: TZ
+              value: Asia/Shanghai
+            - name: ASPNETCORE_ENVIRONMENT
+              value: ProductionaSvc
+          name: v400-webapp-pink-container
+          image: 'registry.cn-hangzhou.aliyuncs.com/sis6/pink:webapp${TAG}'
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              protocol: TCP
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

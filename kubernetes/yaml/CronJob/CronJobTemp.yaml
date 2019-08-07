@@ -1,0 +1,20 @@
+﻿apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: cronjob-app
+spec:
+  schedule: "*/15 * * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: cronjob-_${TAG}
+             image: 'registry-vpc.cn-hangzhou.aliyuncs.com/namespace/repositoryname:CronJob_${TAG}'
+            env:
+              - name: TZ
+                value: Asia/Shanghai
+              - name: APP_ENVIRONMENT
+                value: Production
+          restartPolicy: Never

@@ -1,0 +1,22 @@
+﻿apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job${LAREACODE}${DATETYPE}
+spec:
+  template:
+    spec:
+      containers:
+      - name: ke${LAREACODE}${DATETYPE}
+        image: 'registry-vpc.cn-hangzhou.aliyuncs.com/namespace/repositoryname:Job'
+        env:
+          - name: TZ
+            value: Asia/Shanghai
+          - name: AREACODE_ENVIRONMENT
+            value: ${AREACODE}
+          - name: DATETYPE_ENVIRONMENT
+            value: ${DATETYPE}
+          - name: DATE_ENVIRONMENT
+            value: '${DATE}'
+          - name: APP_ENVIRONMENT
+            value: Production
+      restartPolicy: Never  
