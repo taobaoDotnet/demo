@@ -25,7 +25,8 @@ https://blog.csdn.net/bob_dadoudou/article/details/79476612
 - tms_client
 - contract_client
 #### callback
-其他系统同步数据给当前系统，由于改变数据，需要严格控制消费者。给服务消费者颁发token，在排查错误时，可以更换token来对未知调用者进行限制，也需要记录日志来标记是那些消费者调用的服务，比如sis的交管正约callback。
+其他系统同步数据给当前系统，由于改变数据，需要严格控制消费者。给服务消费者颁发token，在排查错误时，可以更换token来对未知调用者进行限制，也需要记录日志来标记是那些消费者调用的服务，比如sis的交管正约callback。  
+callback与event的区别是callback是服务提供者(eventService)，event事件是双向的(eventRequest\eventService)，通知其他系统，其他系统通知当前系统。
 
 # model实体
 >
