@@ -16,14 +16,15 @@ https://blog.csdn.net/bob_dadoudou/article/details/79476612
 # 目录结构
 ### service
 >
-系统的功能接口，调用提供服务给前端使用。
+系统的功能接口，调用提供服务给前端使用。这一层不关系api_sign,在api层Request的middleware中做sign验证，无需传到service层。
 ### 外部服务依赖
 #### client
 >
-服务消费者代码都按照提供方分别放在client文件夹，因为不同提供方命名规范不同，接口风格不同，并且做为消费者无法改变，只能被动接受。
-- hcis_client
-- tms_client
-- contract_client
+因为不同提供方命名规范不同，接口风格不同，header中的sign也不同，并且做为消费者无法改变，只能被动接受。做为消费者角色的代码需要按照提供方名称放入client文件夹。client包含read和write操作。
+- hcis_client(hcis_sign)
+- tms_client(tms_sign)
+- sis_client(sis_sign)
+- contract_client(contract_sign)
 #### callback
 其他系统同步数据给当前系统，由于改变数据，需要严格控制消费者。给服务消费者颁发token，在排查错误时，可以更换token来对未知调用者进行限制，也需要记录日志来标记是那些消费者调用的服务，比如sis的交管正约callback。  
 callback与event的区别是callback是服务提供者(eventService)，event事件是双向的(eventRequest\eventService)，通知其他系统，其他系统通知当前系统。
