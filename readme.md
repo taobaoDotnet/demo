@@ -12,11 +12,21 @@ https://blog.csdn.net/bob_dadoudou/article/details/79476612
 ## 属性和函数名
 >
 公有大写，私有小写。
-## client文件夹
+
+# 目录结构
+### service
+>
+系统的功能接口，调用提供服务给前端使用。
+### client
 >
 服务消费者代码都按照提供方分别放在client文件夹，因为不同提供方命名规范不同，接口风格不同，并且做为消费者无法改变，只能被动接受。
+- hcis_client
+- tms_client
+- contract_client
+### callback
 
-# Model实体
+
+# model实体
 >
 - PO:Persistent Object,PO的属性与**数据库字段**一一对应（具有CRUD方法的POCO）。
 - DO:Domain Object,DO的属性与**业务属性**一一对应，是对**现实世界**各种业务角色的抽象，比如单据审核、转帐……。
@@ -25,7 +35,7 @@ https://blog.csdn.net/bob_dadoudou/article/details/79476612
   - 服务消费者：用HttpRequest命名(请求/响应)，传给服务的数据用DtoRequest，服务返回的数据DtoResponse。
 - VO:View Object,VO是展示层需要显示的数据对象即UI Model。
 
-## Model传递过程
+## model传递过程
 >
 展示层依赖于服务层、服务层依赖于领域层、领域层依赖持久层。
  * 前端/服务消费者(Front/Consumer)(Consumer_VO->Consumer_Request)-->Service_DtoIn-->Service_DtoOut->Consumer_Response-->Consumer_VO：用户注册提交的表单数据VO-->VO转化为Dto_Request(DtoIn)传给服务层。
