@@ -1,4 +1,4 @@
-﻿# 命名
+﻿# names命名
 ## 文件夹小写
 >
 参考了Java和Golang包名都是小写。
@@ -16,7 +16,7 @@ https://blog.csdn.net/bob_dadoudou/article/details/79476612
 >
 服务消费者代码都按照提供方分别放在client文件夹，因为不同提供方命名规范不同，接口风格不同，并且做为消费者无法改变，只能被动接受。
 
-# 实体Model
+# Model实体
 >
 - PO:Persistent Object,PO的属性与**数据库字段**一一对应（具有CRUD方法的POCO）。
 - DO:Domain Object,DO的属性与**业务属性**一一对应，是对**现实世界**各种业务角色的抽象，比如单据审核、转帐……。
@@ -74,7 +74,7 @@ DO&PO
     让编译器知道：在派生类中声明新的函数签名相同的成员前面加上new关键字，否则会有警告。
 
 
-# Helpers
+# Helpers 第三方工具包
 ## 读取配置
 1.实体注入
  - AppSettings.cs
