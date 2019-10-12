@@ -1,10 +1,11 @@
 # demo docs
-- [names](#installation)
-    - [folder](#folder)
-    - [interface](#interface)
-    - [class](class)
-    - [function](#funcation)
-- [Prerequisite](#prerequisite)
+- [Names](#installation)
+    - [Folder](#folder)
+    - [Interface](#interface)
+    - [Class](#class)
+    - [Function](#funcation)
+- [Directory structure](#directory-structure)
+
 - [Quick start](#quick-start)
 - [Benchmarks](#benchmarks)
 - [Gin v1.stable](#gin-v1-stable)
@@ -27,14 +28,36 @@
 ### funcation
 属性和函数名公有大写，私有小写。
 
-## 目录结构
+## Directory structure
+```shell
+# 在文件夹生成目录结构
+tree /f
+```
+### api
+
 ### service
->
-系统的功能接口，调用提供服务给前端使用。这一层不关系api_sign,在api层Request的middleware中做sign验证，无需传到service层。
-### 外部服务依赖
+本系统的服务层，调用提供服务给前端使用。这一层不关系api_sign,在api层Request的middleware中做sign验证，无需传到service层。
+
+### outside api
+本系统依赖的外部系统接口。
+
 #### client
->
-因为不同提供方命名规范不同，接口风格不同，header中的sign也不同，并且做为消费者无法改变，只能被动接受。做为消费者角色的代码需要按照提供方名称放入client文件夹。client包含read和write操作。
+outside-supply-api-service,使用第三方提供的outside-supply-api-services-read的数据(read),给第三方系统回写数据outside-supply-api-services-write。因为不同提供方命名规范不同，接口风格不同、header中的sign不同。本系统做为消费者无法改变，只能被动接受。所以服务消费者端目录结构需要按照提供方名称放入client文件夹，client包含read和write操作。
+```
+└── client
+    ├── hcis_client
+    │   ├──read
+    │   ├──sign
+    │   └──write
+    ├── sis_client
+    │   ├──read
+    │   ├──sign
+    │   └──write
+    └── tms_client
+        ├──read
+        ├──sign
+        └──write
+```
 - hcis_client(hcis_sign)
 - tms_client(tms_sign)
 - sis_client(sis_sign)
@@ -43,7 +66,7 @@
 其他系统同步数据给当前系统，由于改变数据，需要严格控制消费者。给服务消费者颁发token，在排查错误时，可以更换token来对未知调用者进行限制，也需要记录日志来标记是那些消费者调用的服务，比如sis的交管正约callback。  
 callback与event的区别是callback是服务提供者(eventService)，event事件是双向的(eventRequest\eventService)，eventRequest通知其他系统，eventService其他系统通知当前系统。eventService需要严格控制消费者。
 
-# model实体
+## model实体
 >
 - PO:Persistent Object,PO的属性与**数据库字段**一一对应（具有CRUD方法的POCO）。
 - DO:Domain Object,DO的属性与**业务属性**一一对应，是对**现实世界**各种业务角色的抽象，比如单据审核、转帐……。
