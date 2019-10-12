@@ -101,13 +101,13 @@ callback与event的区别是callback是服务提供者(eventService)，event事�
 2. Dto(Data Transfer Object)：数据传输对象。
 3. Do(Domain Object)：领域对象。
 4. Po(Persistent Object)：持久化对象。
-
+对于前后端分离项目，VO是前端的工作，所以Micro service项目没有VO，DTO数据传输对象包含RequestDTO和ResponseDTO两个方向的对象，DO领域对象是针对具体业务的对象，DO对象可能是通过多个Service、ServiceClient组成的聚合对象，并通过ResponseDTO返回给消费者，所以合并到了ResponseModel，PO的概念其实大于DB-Model，比如可以持久化到数据库、日志、ES等多种。这里是狭义的一个概念，但是更好理解。
 ### Request-Model
-
+服务消费者请求的数据。
 ### Db-Model
-
+与数据库对应的实体。
 ### Response-Model    
-
+返回给服务消费者的数据模型。包含ResponseDTO和Domain Object.
 # Pkg
 第三方工具包Helpers
 ### AppSettings
