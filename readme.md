@@ -67,11 +67,17 @@ outside-supply-api-service,使用第三方提供的outside-supply-api-services-r
 callback与event的区别是callback是服务提供者(eventService)，event事件是双向的(eventRequest\eventService)，eventRequest通知其他系统，eventService其他系统通知当前系统。eventService需要严格控制消费者。
 
 ## Model
+实体的常用分类方法是
+1. Vo(View Object)：界面显示对象。
+2. Dto(Data Transfer Object)：数据传输对象。
+3. Do(Domain Object)：领域对象。
+4. Po(Persistent Object)：持久化对象。
+
 ### Request-Model
 
 ### Db-Model
 
-### Eesponse-Model    
+### Response-Model    
 
 # Pkg
 第三方工具包Helpers
