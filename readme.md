@@ -36,6 +36,11 @@
 # use “tree /f” create tree
 .
 ├── api
+├── pkg
+├── modeles
+│   ├── request
+│   ├── db
+│   ├── response
 ├── service
 ├── service_client
 │   ├── ServiceDiscovery.cs
