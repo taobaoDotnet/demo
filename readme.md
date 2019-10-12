@@ -45,14 +45,17 @@
 ├── service_client
 │   ├── ServiceDiscovery.cs
 │   ├── hcis_client
+│   │   ├── hcis_model
 │   │   ├── read
 │   │   ├── sign
 │   │   └── write
 │   ├── sis_client
+│   │   ├── sis_model
 │   │   ├── read
 │   │   ├── sign
 │   │   └── write
 │   └── tms_client
+│   │   ├── tms_model
 │   │   ├── read
 │   │   ├── sign
 │   │   └── write
@@ -72,14 +75,17 @@ outside-supply-api-service,使用第三方提供的outside-supply-api-services-r
 └── client
     ├── ServiceDiscovery.cs
     ├── hcis_client
+│   │   ├── hcis_model    
     │   ├──read
     │   ├──sign
     │   └──write(EventRequest)
     ├── sis_client
+│   │   ├── sis_model    
     │   ├──read
     │   ├──sign
     │   └──write(EventRequest)
     └── tms_client
+│   │   ├── tms_model    
         ├──read
         ├──sign
         └──write(EventRequest)
