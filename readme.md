@@ -1,19 +1,33 @@
-﻿# names命名
-### 文件夹小写
->
-参考了Java和Golang包名都是小写。
-https://blog.csdn.net/bob_dadoudou/article/details/79476612
-### 接口不以“I”开头
->
-在构造注入时只写接口名称，不写接口实现名称，若接口用I开始，每次都要先写一个与业务无关的I有点累赘，所以参考了Java的命名。
-### 类名
->
-大写。
-### 属性和函数名
->
-公有大写，私有小写。
+# demo docs
+- [names](#installation)
+    - [folder](#folder)
+    - [interface](#interface)
+    - [class](class)
+    - [function](#funcation)
+- [Prerequisite](#prerequisite)
+- [Quick start](#quick-start)
+- [Benchmarks](#benchmarks)
+- [Gin v1.stable](#gin-v1-stable)
+- [Build with jsoniter](#build-with-jsoniter)
+- [API Examples](#api-examples)
+    - [Using GET,POST,PUT,PATCH,DELETE and OPTIONS](#using-get-post-put-patch-delete-and-options)
+    - [Parameters in path](#parameters-in-path)
+ 
+ 
+## names
+### folder
+文件夹用英文小写命名(参考了Java和Golang包名都是小写).
 
-# 目录结构
+### interface
+接口不以“I”开头,在构造注入时只写接口名称，不写接口实现名称，若接口用I开始，每次都要先写一个与业务无关的I有点累赘，所以参考了Java的命名。golang的接口用er结尾。
+
+### class
+类名大写。
+
+### funcation
+属性和函数名公有大写，私有小写。
+
+## 目录结构
 ### service
 >
 系统的功能接口，调用提供服务给前端使用。这一层不关系api_sign,在api层Request的middleware中做sign验证，无需传到service层。
