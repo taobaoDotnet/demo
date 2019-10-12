@@ -41,21 +41,26 @@
 │   ├── request
 │   ├── db
 │   ├── response
+│   ├── wrapper
 ├── service
+│   ├── ServiceRegister.cs
 ├── service_client
 │   ├── ServiceDiscovery.cs
 │   ├── hcis_client
 │   │   ├── hcis_model
+│   │   │   ├── hcis_wrapper_model
 │   │   ├── read
 │   │   ├── sign
 │   │   └── write
 │   ├── sis_client
 │   │   ├── sis_model
+│   │   │   ├── sis_wrapper_model
 │   │   ├── read
 │   │   ├── sign
 │   │   └── write
 │   └── tms_client
 │   │   ├── tms_model
+│   │   │   ├── tms_wrapper_model
 │   │   ├── read
 │   │   ├── sign
 │   │   └── write
