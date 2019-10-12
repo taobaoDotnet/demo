@@ -14,13 +14,14 @@
 - [Model](#model)
     - [Request Model](#model-request)
     - [Db Model](#db-model)
-    - [Response Model](#response-model)    
+    - [Response Model](#response-model)
+- [Error](#error)    
 - [Pkg](#pkg) 
     - [AppSettings](#AppSettings)
     - [Service Discovery](#service-discovery)
  
 ## Installation
-对dotnet core项目的命名规则，目录结构给出了一些建议，并编写了可以运行的代码示例。 
+对dotnet core项目的命名规则、目录结构、错误处理给出了一些建议，并编写了可以运行的代码示例。 
 一个优秀的程序需要简单的问题解决方案并且考虑易于维护，本文仅仅对单个微服务项目进行了示例，建议一次调用的过程是PostRequestModel-->Route--Api--Service[ServiceClient,Model,Pkg]-->ResponseModel.项目进行了分层，但是一个实现的函数调用链路尽量扁平，调用链路太长不易维护。 错误信息的暴漏。
 一个稳定运行的项目不只是代码，还要综合考虑网络结构、网络带宽、存储结构、存储空间、数据库读写分离、程序发布与线上版本管理。
 ## Names
@@ -119,6 +120,10 @@ callback与event的区别是callback是服务提供者(eventService)，event事�
 与数据库对应的实体。
 ### Response-Model    
 返回给服务消费者的数据模型。包含ResponseDTO和Domain Object.
+
+## Error
+
+
 # Pkg
 第三方工具包Helpers
 ### AppSettings
