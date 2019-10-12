@@ -1,21 +1,26 @@
 # demo docs
-- [Names](#installation)
+- [Names](#names)
     - [Folder](#folder)
     - [Interface](#interface)
     - [Class](#class)
     - [Function](#funcation)
 - [Directory structure](#directory-structure)
-
-- [Quick start](#quick-start)
-- [Benchmarks](#benchmarks)
-- [Gin v1.stable](#gin-v1-stable)
-- [Build with jsoniter](#build-with-jsoniter)
-- [API Examples](#api-examples)
-    - [Using GET,POST,PUT,PATCH,DELETE and OPTIONS](#using-get-post-put-patch-delete-and-options)
-    - [Parameters in path](#parameters-in-path)
+    - [api](#api)
+    - [service](#service)
+    - [outside api](#outside-api)
+        - [client](#client)
+	- [callback](#callback)
+- [model](#model)
+    - [Benchmarks](#benchmarks)
+    - [Gin v1.stable](#gin-v1-stable)
+    - [Build with jsoniter](#build-with-jsoniter)
+    - [API Examples](#api-examples)
+        - [Using GET,POST,PUT,PATCH,DELETE and OPTIONS](#using-get-post-put-patch-delete-and-options)
+        - [Parameters in path](#parameters-in-path)
+- [Helpers](#helpers) 
+    - [AppSettings](#AppSettings)
  
- 
-## names
+## Names
 ### folder
 文件夹用英文小写命名(参考了Java和Golang包名都是小写).
 
@@ -63,7 +68,7 @@ outside-supply-api-service,使用第三方提供的outside-supply-api-services-r
 其他系统同步数据给当前系统，由于改变数据，需要严格控制消费者。给服务消费者颁发token，在排查错误时，可以更换token来对未知调用者进行限制，也需要记录日志来标记是那些消费者调用的服务，比如sis的交管正约callback。  
 callback与event的区别是callback是服务提供者(eventService)，event事件是双向的(eventRequest\eventService)，eventRequest通知其他系统，eventService其他系统通知当前系统。eventService需要严格控制消费者。
 
-## model实体
+## model
 >
 - PO:Persistent Object,PO的属性与**数据库字段**一一对应（具有CRUD方法的POCO）。
 - DO:Domain Object,DO的属性与**业务属性**一一对应，是对**现实世界**各种业务角色的抽象，比如单据审核、转帐……。
@@ -122,7 +127,7 @@ DO&PO
 
 
 # Helpers 第三方工具包
-### 读取配置
+### AppSettings
 1.实体注入
  - AppSettings.cs
  - Dependency Injection
