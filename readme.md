@@ -1,4 +1,5 @@
 # demo docs
+- [Installation](#installation)
 - [Names](#names)
     - [Folder](#folder)
     - [Interface](#interface)
@@ -18,6 +19,10 @@
     - [AppSettings](#AppSettings)
     - [Service Discovery](#service-discovery)
  
+## Installation
+对dotnet core项目的命名规则，目录结构给出了一些建议，并编写了可以运行的代码示例。 
+一个优秀的程序需要简单的问题解决方案并且考虑易于维护，本文仅仅对单个微服务项目进行了示例，建议一次调用的过程是PostRequestModel-->Route--Api--Service[ServiceClient,Model,Pkg]-->ResponseModel.项目进行了分层，但是一个实现的函数调用链路尽量扁平，调用链路太长不易维护。 错误信息的暴漏。
+一个稳定运行的项目不只是代码，还要综合考虑网络结构、网络带宽、存储结构、存储空间、数据库读写分离、程序发布与线上版本管理。
 ## Names
 ### Folder
 文件夹用英文小写命名(参考了Java和Golang包名都是小写).
@@ -105,7 +110,8 @@ callback与event的区别是callback是服务提供者(eventService)，event事�
 1. VO(View Object)：界面显示对象。
 2. DTO(Data Transfer Object)：数据传输对象。
 3. DO(Domain Object)：领域对象。
-4. PO(Persistent Object)：持久化对象。
+4. PO(Persistent Object)：持久化对象。 
+
 对于前后端分离项目，VO是前端的工作，所以Micro service项目没有VO，DTO数据传输对象包含RequestDTO和ResponseDTO两个方向的对象，DO领域对象是针对具体业务的对象，DO对象可能是通过多个Service、ServiceClient组成的聚合对象，并通过ResponseDTO返回给消费者，所以合并到了ResponseModel，PO的概念其实大于DB-Model，比如可以持久化到数据库、日志、ES等多种。这里是狭义的一个概念，但是更好理解。
 ### Request-Model
 服务消费者请求的数据。
