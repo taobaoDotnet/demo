@@ -8,8 +8,8 @@
     - [Api](#api)
     - [Service](#service)
     - [Outside Api](#outside-api)
-        - [Client](#client)
-        - [Callback](#callback)
+        - [Service Client](#service-client)
+        - [Service Event](#service-event)
 - [Model](#model)
     - [Request Model](#model-request)
     - [Db Model](#db-model)
@@ -33,8 +33,25 @@
 
 ## Directory Structure
 ```shell
-# 在文件夹生成目录结构
-tree /f
+# use “tree /f” create tree
+.
+├── api
+├── service
+├── service_client
+│   ├── ServiceDiscovery.cs
+│   ├── hcis_client
+│   │   ├── read
+│   │   ├── sign
+│   │   └── write
+│   ├── sis_client
+│   │   ├── read
+│   │   ├── sign
+│   │   └── write
+│   └── tms_client
+│   │   ├── read
+│   │   ├── sign
+│   │   └── write
+└── service_event
 ```
 ### Api
 
@@ -44,25 +61,26 @@ tree /f
 ### Outside Api
 本系统依赖的外部系统接口。
 
-#### Client
+#### ServiceClient
 outside-supply-api-service,使用第三方提供的outside-supply-api-services-read的数据(read),给第三方系统回写数据outside-supply-api-services-write。因为不同提供方命名规范不同，接口风格不同、header中的sign不同。本系统做为消费者无法改变，只能被动接受。所以服务消费者端目录结构需要按照提供方名称放入client文件夹，client包含read和write操作。
 ```
 └── client
+    ├── ServiceDiscovery.cs
     ├── hcis_client
     │   ├──read
     │   ├──sign
-    │   └──write
+    │   └──write(EventRequest)
     ├── sis_client
     │   ├──read
     │   ├──sign
-    │   └──write
+    │   └──write(EventRequest)
     └── tms_client
         ├──read
         ├──sign
-        └──write
+        └──write(EventRequest)
 ```
 
-#### Callback
+#### ServiceEvent(callback)
 其他系统同步数据给当前系统，由于改变数据，需要严格控制消费者。给服务消费者颁发token，在排查错误时，可以更换token来对未知调用者进行限制，也需要记录日志来标记是那些消费者调用的服务，比如sis的交管正约callback。  
 callback与event的区别是callback是服务提供者(eventService)，event事件是双向的(eventRequest\eventService)，eventRequest通知其他系统，eventService其他系统通知当前系统。eventService需要严格控制消费者。
 
@@ -100,7 +118,7 @@ callback与event的区别是callback是服务提供者(eventService)，event事�
         _settings = settings.Value;
     }
 	```
-### service discovery
+### Service Discovery
 1.appsettings.json
 ```c#
   "ServiceDiscovery": {
