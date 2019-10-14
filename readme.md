@@ -25,6 +25,8 @@
 一个优秀的程序需要简单的问题解决方案并且考虑易于维护，本文仅仅对单个微服务项目进行了示例，建议一次调用的过程是PostRequestModel-->Route--Api--Service[ServiceClient,Model,Pkg]-->ResponseModel.项目进行了分层，但是一个实现的函数调用链路尽量扁平，调用链路太长不易维护。 错误信息的暴漏。
 一个稳定运行的项目不只是代码，还要综合考虑网络结构、网络带宽、存储结构、存储空间、数据库读写分离、程序发布与线上版本管理。
 ## Names
+golang中优雅的同名包处理，xxx_service,xxx_client,的包名都是xxx，在xxx_service中调用xxx_client时用xxx.function,虽然同名但是不冲突。不过还是建议修改一下。xxxclient,xxxservice的doubleword。
+
 ### Folder
 文件夹用英文小写命名(参考了Java和Golang包名都是小写).
 
