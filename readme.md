@@ -122,6 +122,7 @@ callback与event的区别是callback是服务提供者(eventService)，event事�
 返回给服务消费者的数据模型。包含ResponseDTO和Domain Object.
 
 ## Error
+1. 把错误透传给调用者，不要到处打印日志。
 
 
 # Pkg
