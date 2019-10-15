@@ -29,7 +29,7 @@
 
 ### package
 [style-packages](https://rakyll.org/style-packages/)  
-golang中优雅的同名包处理，xxx_service,xxx_client,的包名都是xxx，在xxx_service中调用xxx_client时用xxx.function,虽然同名但是不冲突。虽然支持但是建用xxxclient,xxxservice的double word 的命名方式。
+golang中优雅的同名包处理，./service/xxx,./client/xxxx,的包名都是xxx，在xxx_service中调用xxx_client时用xxx.function,虽然同名但是不冲突。虽然支持但是建用xxxclient,xxxservice的double word的命名方式。
 1. 简短但具有代表性的名称,仅从软件包的名称中掌握其用途,避免使用"common", "util", "shared", or "lib"等宽泛的命名。
 2. 无复数。
 3. 
